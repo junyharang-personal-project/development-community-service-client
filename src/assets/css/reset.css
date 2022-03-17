@@ -1,0 +1,74 @@
+@charset "utf-8";
+html * {
+	font-size:14px;
+	font-family:'Nanum Gothic', 'Noto Sans KR', sans-serif;
+	font-weight:normal;
+	color: inherit;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-moz-text-size-adjust: none; /*Firefox*/
+	-ms-text-size-adjust: none;  /*Ie*/
+	-o-text-size-adjust: none; /*old versions of Opera*/
+	-webkit-text-size-adjust:none; /* 글자크기 자동조정방지 */
+	-webkit-text-size-adjust:auto; /* 화면 폭에 맞추어 자동조절 */
+	-webkit-text-size-adjust:100%; /* 폰트크기를 지정된 사이즈로 변경 */
+	box-sizing:border-box;
+	word-break:keep-all;
+	line-height:1.3;
+	color: #333;
+}
+/* mobile style */
+*{-webkit-text-size-adjust:none; font-size:inherit; box-sizing:border-box;}
+body, form, div, p, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li, fieldset, th, td, input, textarea,button,select{margin:0;padding:0;/*font-weight:normal;*/}
+body{-webkit-user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+li{list-style:none}
+a{text-decoration:none; color: inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}
+a:hover{text-decoration:none; color: inherit;}
+a[href^="tel"]{ font-style:normal}
+address, caption, em, var{font-style:normal;font-weight:normal}
+input, textarea, select{letter-spacing:normal}
+ol, ul, dl{list-style:none}
+fieldset, img{border:0}
+legend, caption{display:none}
+img{border:0;vertical-align:top}
+hr{display:none}
+table{border-collapse:collapse;border-spacing:0; width:100%;}
+br{letter-spacing:normal}
+p{letter-spacing:normal}
+input{vertical-align:middle}
+input[type="text"], input[type="password"]{-webkit-appearance:none}
+input[type="checkbox"]{-webkit-appearance:none;-webkit-border-radius:0}
+input:checked[type="checkbox"]{-webkit-appearance:checkbox}
+input[type="radio"]{border:none;-webkit-appearance:none}
+button,input[type="button"],input[type="submit"],input[type="reset"],input[type="file"]{-webkit-appearance:button;border-radius:0; border:0;}
+textarea{-webkit-appearance:none}
+textarea::placeholder{color:#ccc;}
+select{-webkit-appearance:menulist-text}
+div, p, li, dd, table, td, th, span, textarea, select, section, article, footer	{ font-size:inherit; font-weight:inherit;}
+span, p	 {line-height: inherit; font-weight:inherit;}
+strong, b	{font-weight:700; font-weight:bold;}
+button {line-height:1; cursor:pointer;}
+/* input[readonly] {!important;background:#f1f1f1;} */
+input::placeholder {	}
+input:-ms-input-placeholder {color:#4d4e7b;} 
+
+
+input[type=password] {font-family: 'Lato'; color:#4d4e7b;}/* 나눔폰트일 경우 패스워드 오류 */
+/* 스크롤 */
+/* =========================================================================== */
+
+.scroll {overflow:auto; overflow-y: scroll; overflow-x: hidden; padding-right:10px;} /* For the "inset" look only */
+.scroll::-webkit-scrollbar {width:5px;} /* Let's get this party started */
+.scroll::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 0px rgba(0,0,0,0); background: transparent;} /* Track */
+.scroll::-webkit-scrollbar-thumb {-webkit-border-radius: 0px; border-radius: 0px; background: rgba(200,200,200,1);  border-radius:10px; -webkit-box-shadow: inset 0 0 0px rgba(0,0,0,0);}/* Handle */
+
+.scrollX {overflow:auto; overflow-y: scroll; overflow-x: hidden; padding-bottom:10px;} /* For the "inset" look only */
+.scrollX::-webkit-scrollbar {height:20px;} /* Let's get this party started */
+.scrollX::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 0px rgba(0,0,0,0); background: #f5f5f5;} /* Track */
+.scrollX::-webkit-scrollbar-thumb {-webkit-border-radius: 0px; border-radius: 0px; background: rgba(200,200,200,1);  border-radius:10px; -webkit-box-shadow: inset 0 0 0px rgba(0,0,0,0);}/* Handle */
+
+input, select {
+    background: #f8f6f5;
+    border: 0;
+    padding: 10px;
+    font-weight: 300;
+}
