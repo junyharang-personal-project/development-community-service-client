@@ -1,6 +1,6 @@
 # 🚀 프로젝트 소개
 
-Juny Company라는 가상의 회사 내에서 개발자 직원들이 이용할 수 있는 커뮤니티형 웹 서비스
+Juny Company라는 가상의 회사 내에서 개발자 직원들이 이용할 수 있는 커뮤니티형 웹 서비스 Client(Front End)
 
 <br><br>
 
@@ -28,5 +28,6 @@ Juny Company라는 가상의 회사 내에서 개발자 직원들이 이용할 �
 <br>
 **●[\[CSS\] CSS 정리](https://junyharang.tistory.com/223)**
 <br>
-
+**●[\[FrontEnd\]\[Vue-PJ\] 개발자 커뮤니티 서비스 - Paging 처리](https://junyharang.tistory.com/235)**
+<br>
 

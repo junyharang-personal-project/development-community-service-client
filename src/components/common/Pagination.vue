@@ -4,19 +4,19 @@
 
     <ul>
       <li class="prev02">
-        <a href="javascript:;" @click="firstPage">
+        <a href="javascript:" @click="firstPage">
           <img :src="require(`@/assets/images/btn_first.png`)">
         </a>
       </li>
 
       <li class="prev">
-        <a href="javascript:;" @click="prevPage">
+        <a href="javascript:" @click="prevPage">
           <img :src="require(`@/assets/images/btn_prev.png`)">
         </a>
       </li>
 
       <li v-for="i in range(startPage, endPage)" v-bind:key="i" :class="classActive(i)">
-        <a href="javascript:;" @click="setPage(i)">
+        <a href="javascript:" @click="setPage(i)">
           <template v-if="i !== nowPage" style="cursor: pointer;">{{ i }}</template>
 
           <template v-else-if="i === nowPage">{{ i }}</template>
@@ -24,13 +24,13 @@
       </li>
 
       <li class="next">
-        <a href="javascript:;" @click="nextPage">
+        <a href="javascript:" @click="nextPage">
           <img :src="require(`@/assets/images/btn_next.png`)">
         </a>
       </li>
 
       <li class="next02">
-        <a href="javascript:;" @click="lastPage">
+        <a href="javascript:" @click="lastPage">
           <img :src="require(`@/assets/images/btn_last.png`)">
         </a>
       </li>
