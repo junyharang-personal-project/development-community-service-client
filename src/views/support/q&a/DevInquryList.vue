@@ -25,7 +25,7 @@
           <option value="3">작성자</option>
         </select>
 
-        <input type="text" name="" class="tops_inp" placeholder="검색어를 입력 해 주세요!" v-model="searchParams.srcWord" @keyup.enter="searchList()">
+        <input type="text" name="" class="tops_inp" placeholder="검색어를 입력 해 주세요!" v-model="searchParams.srchWord" @keyup.enter="searchList()">
 
         <button type="button" onclick="" class="topBtnSearch" @click="searchList()">검색</button>
       </div> <!-- class="topSearch" -->
@@ -198,7 +198,7 @@ export default {
 
     goDetailView(inqrySn) {
       this.$router.push({
-        path : "/support/devInquryDetailView",
+        path : "/support/q&a/devInquryDetailView",
         query : {
           inqrySn : inqrySn,
         } // query 끝
@@ -207,10 +207,10 @@ export default {
 
     goRegist() {
       this.$router.push({
-        path: "/support/devInquryRegist",
+        path: "/support/q&a/devInquryRegist",
         query : {
           status : 'C',
-          noticeSn : 0
+          inqrySn : 0
         }
       });
     }, // goRegist() 끝
