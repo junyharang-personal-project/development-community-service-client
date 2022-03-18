@@ -191,7 +191,7 @@ export default {
         doRegist() {
             console.log("글 등록(doRegist\(\)) Method가 동작하였습니다! DevInquryRegist.vue의 Member 변수 inqurySj 값 : " + this.devInquryData.inqrySj);
             // 필수 입력 항목 검사를 위한 Validation 분기절 (제목)
-            if(this.devInquryData.inqrySj == undefined || this.devInquryData.inqrySj == '') {
+            if(this.devInquryData.inqrySj === undefined || this.devInquryData.inqrySj === '') {
                 this.validationPopupShow = true;
                 this.$ref.inqrySj.focus();
 
