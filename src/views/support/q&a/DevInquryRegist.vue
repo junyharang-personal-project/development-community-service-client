@@ -23,7 +23,9 @@
             <div class="ListTbWrap mt-20">
                 
                 <div class="margin-left:5px;margin-bottom:5px;">
-                    <input type="checkbox" name="" id="result01" :checked="devInquryData.secretAt === false" v-model="devInquryData.secretAt" value=false>
+                    <input type="checkbox" name="" id="result01"
+                           :checked="devInquryData.secretAt === false"
+                           v-model="devInquryData.secretAt" value=false>
                     <label for="result01">
                         <span></span>비밀글
                     </label>

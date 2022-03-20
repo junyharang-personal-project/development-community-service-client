@@ -79,7 +79,9 @@
 
             <td>
               <template v-if="devInquryData.beforeInqrySn !== -1">
-                <router-link to="/support/devInquryDetailView" @click="goDetailView(devInquryData.beforeInqrySn)">{{devInquryData.beforeInqrySj}}</router-link>
+                <router-link to="/support/devInquryDetailView" @click="goDetailView(devInquryData.beforeInqrySn)">
+                  {{devInquryData.beforeInqrySj}}
+                </router-link>
               </template> <!-- template v-if="devInquryData.beforeInqrySn !== -1" 끝 -->
 
               <template v-else>
@@ -92,7 +94,10 @@
             <th>다음 글</th>
             <td>
               <template v-if="devInquryData.nextInqrySn !== -1">
-                <router-link to="/support/devInquryDetailView" @click="goDetailView(devInquryData.nextInqrySn)">{{devInquryData.nextInqrySj}}</router-link>
+                <router-link to="/support/devInquryDetailView"
+                             @click="goDetailView(devInquryData.nextInqrySn)">
+                  {{devInquryData.nextInqrySj}}
+                </router-link>
               </template> <!-- template v-if="devInquryData.nextInqurySn !== -1" 끝 -->
 
               <template v-else>

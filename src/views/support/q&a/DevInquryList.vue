@@ -198,7 +198,7 @@ export default {
 
     goDetailView(inqrySn) {
       this.$router.push({
-        path : "/support/q&a/devInquryDetailView",
+        path : "/support/devInquryDetailView",
         query : {
           inqrySn : inqrySn,
         } // query 끝
@@ -207,7 +207,7 @@ export default {
 
     goRegist() {
       this.$router.push({
-        path: "/support/q&a/devInquryRegist",
+        path: "/support/devInquryRegist",
         query : {
           status : 'C',
           inqrySn : 0
