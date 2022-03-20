@@ -17,8 +17,11 @@ Juny Company라는 가상의 회사 내에서 개발자 직원들이 이용할 �
 ## Project Code 정리
 
 ### 🗂 목차
+---
+#### 🏠 HOME / MAIN 정리
 **●[\[FrontEnd\]\[Vue-PJ\] 개발자 커뮤니티 서비스 - Home / Main](https://junyharang.tistory.com/226)**
-<br>
+<br><br>
+#### 🏠 게시판(Board) - CRUD
 **●[\[FrontEnd\]\[Vue-PJ\] 개발자 커뮤니티 서비스 - 게시판 만들기 : 목록 조회](https://junyharang.tistory.com/232)**
 <br>
 **●[\[FrontEnd\]\[Vue-PJ\] 개발자 커뮤니티 서비스 - 게시판 만들기 : 상세 조회](https://junyharang.tistory.com/236)**
@@ -26,6 +29,8 @@ Juny Company라는 가상의 회사 내에서 개발자 직원들이 이용할 �
 **●[\[FrontEnd\]\[Vue-PJ\] 개발자 커뮤니티 서비스 - 게시판 만들기 : 등록 / 수정](https://junyharang.tistory.com/239)**
 <br>
 **●[\[FrontEnd\]\[Vue-PJ\] 개발자 커뮤니티 서비스 - 게시판 만들기 : 삭제](https://junyharang.tistory.com/240)**
+<br><br>
+#### 🏠 회원 관리(User Management)
 <br><br>
 #### - 부 록 -
 **●[\[Vue.js\] axios 설치](https://junyharang.tistory.com/233)**
