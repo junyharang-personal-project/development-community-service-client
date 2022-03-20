@@ -67,6 +67,32 @@
           </div>  <!-- class="view_wrap" style="border-top: 1px solid black;" 끝 -->
         </template> <!-- template v-if="devInquryData.answerAt !== 'N'" 끝 -->
 
+        <template v-else>
+          <table class="tList">
+            <caption>답글</caption>
+
+            <colgroup>
+              <col style="width: 15%">
+            </colgroup>
+
+            <tbody>
+              <tr>
+                <td class="PalignL">답글
+                  <span class="t_red">* (필수 작성)</span>
+                </td>
+
+                <td class="PalignL">
+                  <input id="" type="text" class="w100p" placeholder="귀하의 지식을 전수 해 주세요!" v-model="devInquryData.answerCn" ref="answerCn">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="btn_wrap">
+            <button class="btn04" @click="doRegistReply()">답글 등록</button>
+          </div>
+        </template>
+
         <table class="tView2 mt-40">
           <colgroup>
             <col style="width: 12%">
@@ -206,6 +232,22 @@ export default {
         } // query 끝
       });
     }, // goRegist(inqurySn) 끝
+
+    doRegistReply() {
+      console.log("답글 등록(doRegist\(\)) Method가 동작하였습니다! DevInquryDetailView.vue의 Member 변수 answerCn 값 : " + this.devInquryData.answerCn);
+
+      // 필수 입력 항목 입력 여부 검사(valication) - 답글 내용
+      if (this.devInquryData.answerCn === undefined || this.devInquryData.answerCn === '') {
+        console.log("답변을 등록하고자 하지만, 답변 내용이 작성되지 않았습니다!")
+
+        this.validationPopupShow = true;
+        this.$ref.answerCn.focus();
+
+        return false;
+      } // if (this.devInquryData.answerCn === undefined || this.devInquryData.answerCn === '')문 끝
+
+      // 답글 등록을 위해 API 호출을 통해 BackEnd에 내용 전달
+    },
 
     doDelete() {
       devInquryDelete({
