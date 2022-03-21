@@ -75,7 +75,6 @@
         <template v-else>
           <table class="tList">
             <caption>답글</caption>
-
             <colgroup>
               <col style="width: 15%">
             </colgroup>
@@ -83,11 +82,10 @@
             <tbody>
               <tr>
                 <td class="PalignL">답글
-                  <span class="t_red">* (필수 작성)</span>
                 </td>
 
                 <td class="PalignL">
-                  <textarea id="" type="text" class="w100p" rows="10" placeholder="귀하의 지식을 전수 해 주세요!" v-model="devInquryData.answerCn" ref="answerCn"></textarea>
+                  <textarea id="" type="text" class="w100p" rows="5" placeholder="귀하의 지식을 전수 해 주세요!" v-model="devInquryData.answerCn" ref="answerCn"></textarea>
                 </td>
               </tr>
             </tbody>
@@ -197,7 +195,7 @@
 
 <script>
 import {devInquryDetail, devInquryDelete } from "@/api/devInquryApi";
-import {devInquryReplyRegist} from "@/api/devInquryReplyApi";
+import {devInquryReplyRegist, devInquryReplyDelete} from "@/api/devInquryReplyApi";
 
 
 export default {
@@ -293,7 +291,7 @@ export default {
       devInquryDelete({
         inqrySn : this.searchParam.inqrySn
       }).then(response => {
-        console.log("해당 하는 게시물이 삭제 됩니다! 해당 게시글 정보를 출력 합니다! ", response.data);
+        console.log("해당 하는 게시물이 삭제 되었습니다! 삭제 된 게시글 정보를 출력 합니다! ", response.data);
         // 삭제가 완료되면 글 목록으로 보낸다.
         this.goList();
       }).catch(error => {
@@ -304,8 +302,21 @@ export default {
     }, // doDelete() 끝
 
     doDeleteReply() {
+      devInquryReplyDelete(
+        this.searchParam.inqrySn
+      ).then(response => {
+        console.log("해당 하는 게시물의 답변이 삭제 됩니다! 해당 답변 정보를 출력 합니다! ", response.data);
 
-    }
+        if (response.data.code === 200) {
+          this.goDetailView(response.data.inqrySn);
+        }
+
+      }).catch(error => {
+        console.log("답글을 삭제 하던 도 중 문제가 발생 하였습니다!" + error);
+
+        alert('Q&A 게시글 답글 삭제에 실패하였습니다! \r\n 관리자에게 문의 하여 주시기 바랍니다.')
+      });
+    } // doDeleteReply() 끝
   }, // methods 끝
 } // export default 끝
 </script>

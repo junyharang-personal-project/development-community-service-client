@@ -23,7 +23,7 @@ export function devInquryReplyRegist(params) {
 
     return axios({
         // Back End Route URI
-        url: '/api/support/devInqury/Reply',
+        url: '/api/support/dev-inqury/reply',
         // HTTP Method
         method: 'post',
         data: params
@@ -39,7 +39,7 @@ export function devInquryReplyDelete(params) {
 
     return axios({
         // Back End Rout URI
-        url: '/api/support/devInqury/Reply',
+        url: '/api/support/dev-inqury/reply/'+params,
         // HTTP Method
         method: 'delete',
     });
