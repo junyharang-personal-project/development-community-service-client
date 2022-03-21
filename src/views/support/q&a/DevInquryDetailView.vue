@@ -65,6 +65,11 @@
 
             {{devInquryData.answerCn}}
           </div>  <!-- class="view_wrap" style="border-top: 1px solid black;" 끝 -->
+          <div class="btn_wrap">
+            <button class="btn04" @click="this.devInquryData.answerAt = 'N'">답글 수정</button>
+
+            <button class="btn03" @click="this.deleteReplyPopup = true">답글 삭제</button>
+          </div>
         </template> <!-- template v-if="devInquryData.answerAt !== 'N'" 끝 -->
 
         <template v-else>
@@ -82,14 +87,14 @@
                 </td>
 
                 <td class="PalignL">
-                  <input id="" type="text" class="w100p" placeholder="귀하의 지식을 전수 해 주세요!" v-model="devInquryData.answerCn" ref="answerCn">
+                  <textarea id="" type="text" class="w100p" rows="10" placeholder="귀하의 지식을 전수 해 주세요!" v-model="devInquryData.answerCn" ref="answerCn"></textarea>
                 </td>
               </tr>
             </tbody>
           </table>
 
           <div class="btn_wrap">
-            <button class="btn04" @click="doRegistReply()">답글 등록</button>
+            <button class="btn04" @click="doRegistReply(inqrySn)">답글 등록</button>
           </div>
         </template>
 
@@ -170,10 +175,29 @@
     <div class="popup_close" @click="this.deletePopup = false">닫기</div>
 
   </div> <!-- div class="card3_popup" style="display: block; top: 160px;" v-show="this.deletePopup" 끝 -->
+
+  <!-- 답글 삭제 관련 Pop up -->
+  <div class="card3_popup" style="display: block; top: 160px;" v-show="this.deleteReplyPopup">
+
+      <div class="popup_body">
+
+        <!-- Message -->
+        <div class="card_mody mt-20">
+          <p class="c_tit">답글을 정말 삭제 하시겠습니까?</p>
+        </div>  <!-- div class="card_mody mt-20" 끝 -->
+      </div>  <!-- div class="popup_body" 끝 -->
+
+    <div class="btn_wrap_pop">
+      <button type="button" class="btn_m01_50" @click="doDeleteReply()">확인</button>
+
+      <button type="button" class="btn_m02_50" @click="this.deleteReplyPopup = false">취소</button>
+    </div>  <!-- div class="btn_wrap_pop" 끝 -->
+  </div>  <!-- div class="card3_popup" style="display: block; top: 160px;" v-show="this.deleteReplyPopup" 끝 -->
 </template>
 
 <script>
 import {devInquryDetail, devInquryDelete } from "@/api/devInquryApi";
+import {devInquryReplyRegist} from "@/api/devInquryReplyApi";
 
 
 export default {
@@ -184,7 +208,8 @@ export default {
       }, // searchParams 끝
 
       devInquryData : {},
-      deletePopup : false
+      deletePopup : false,
+      deleteReplyPopup : false,
     }
   }, // data() 끝
 
@@ -247,6 +272,21 @@ export default {
       } // if (this.devInquryData.answerCn === undefined || this.devInquryData.answerCn === '')문 끝
 
       // 답글 등록을 위해 API 호출을 통해 BackEnd에 내용 전달
+      devInquryReplyRegist(this.devInquryData).then(response => {
+        console.log("답글 등록을 위해 Back End에게 내용을 요청하고, 응답 받은 값 : " + response.data.inqrySn);
+
+        alert("답글 등록이 완료 되었습니다!");
+
+        // 작성된 답글 상세 조회로 이동 시키기 위해 해당 Method 호출
+        this.goDetailView(response.data.inqurySn);
+      }).catch(error => {
+
+        console.log("답글 등록을 처리하는 중에 문제가 발생하여 catch문이 동작 하였습니다!");
+
+        alert("답글 등록이 실패 되었습니다!" + error);
+
+        this.goDetailView();
+      })
     },
 
     doDelete() {
@@ -261,7 +301,11 @@ export default {
 
         alert('Q&A 게시글 삭제에 실패하였습니다! \r\n 관리자에게 문의 하여 주시기 바랍니다.')
       });
-    } // doDelete() 끝
+    }, // doDelete() 끝
+
+    doDeleteReply() {
+
+    }
   }, // methods 끝
 } // export default 끝
 </script>
