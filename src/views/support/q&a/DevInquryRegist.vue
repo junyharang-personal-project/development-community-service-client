@@ -110,7 +110,7 @@
 
         <!-- Pop up 끝 -->
 
-    <!-- Pop up -->
+    <!-- NULL값 Check Validation Pop up -->
     <div class="card3_popup" style="display: block; top:160px;" v-show="this.validationPopupShow">
 
         <div class="popup_body">

@@ -191,6 +191,25 @@
       <button type="button" class="btn_m02_50" @click="this.deleteReplyPopup = false">취소</button>
     </div>  <!-- div class="btn_wrap_pop" 끝 -->
   </div>  <!-- div class="card3_popup" style="display: block; top: 160px;" v-show="this.deleteReplyPopup" 끝 -->
+
+  <!-- NULL값 Check Validation Pop up -->
+  <div class="card3_popup" style="display: block; top:160px;" v-show="this.validationPopupShow">
+
+    <div class="popup_body">
+
+      <div class="card_mody mt-20">
+        <p class="c_tit">답변을 등록하시려면 내용을 입력 해 주세요!</p>
+      </div> <!-- div class="card_mody mt-20" 끝 -->
+
+    </div>  <!-- div class="popup_body" 끝 -->
+
+    <div class="btn_wrap_pop">
+      <button class="btn_m01 blue" @click="this.validationPopupShow = false">확인</button>
+    </div>  <!-- div class="btn_wrap_pop" 끝 -->
+
+  </div> <!-- div class="card3_popup" style="display: block; top:160px;" v-show="this.finishPopupShow" 끝 -->
+
+  <!-- Pop up 끝 -->
 </template>
 
 <script>
@@ -208,6 +227,7 @@ export default {
       devInquryData : {},
       deletePopup : false,
       deleteReplyPopup : false,
+      validationPopupShow : false,
     }
   }, // data() 끝
 
@@ -257,10 +277,13 @@ export default {
     }, // goRegist(inqurySn) 끝
 
     doRegistReply() {
+
+      let pattern = /^\s+|\s+$/g;  // 공백(Space)에 해당하는 정규 표현식
+
       console.log("답글 등록(doRegist\(\)) Method가 동작하였습니다! DevInquryDetailView.vue의 Member 변수 answerCn 값 : " + this.devInquryData.answerCn);
 
       // 필수 입력 항목 입력 여부 검사(valication) - 답글 내용
-      if (this.devInquryData.answerCn === undefined || this.devInquryData.answerCn === '') {
+      if (this.devInquryData.answerCn === undefined || this.devInquryData.answerCn.replace(pattern, '') === "" || this.devInquryData.answerCn === null) {
         console.log("답변을 등록하고자 하지만, 답변 내용이 작성되지 않았습니다!")
 
         this.validationPopupShow = true;
@@ -285,7 +308,7 @@ export default {
 
         this.goDetailView();
       })
-    },
+    }, // doRegistReply() 끝
 
     doDelete() {
       devInquryDelete({

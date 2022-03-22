@@ -43,4 +43,4 @@ export function devInquryReplyDelete(params) {
         // HTTP Method
         method: 'delete',
     });
-}
+} // devInquryReplyDelete(params) 끝
