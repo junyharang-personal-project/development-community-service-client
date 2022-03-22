@@ -214,7 +214,7 @@
 
 <script>
 import {devInquryDetail, devInquryDelete } from "@/api/devInquryApi";
-import {devInquryReplyRegist, devInquryReplyDelete} from "@/api/devInquryReplyApi";
+import {devInquryReplyRegist, devInquryReplyDelete, devInquryDetailViewWithReply} from "@/api/devInquryReplyApi";
 
 
 export default {
@@ -237,6 +237,21 @@ export default {
 
   methods: {
     getDetailView() {
+      devInquryDetail({
+        inqrySn: this.searchParam.inqrySn
+      }).then(response => {
+        console.log("Server에서 응답으로 들어온 Data의 상세 보기 정보를 출력 합니다(response.data.devInquryView) : ", response.data);
+
+        this.devInquryData = response.data.devInquryVO;
+
+        console.log("응답으로 들어온 모든 Data 내용 : " + this.devInquryData)
+      }).catch(error => {
+        console.log("Q&A 게시판 상세보기 axios 처리 중 문제가 발생 하였습니다.", error)
+        this.goList();
+      });
+    }, // getDetailView() 끝
+
+    getDetailViewWithReply() {
       devInquryDetail({
         inqrySn: this.searchParam.inqrySn
       }).then(response => {
@@ -299,7 +314,7 @@ export default {
         alert("답글 등록이 완료 되었습니다!");
 
         // 작성된 답글 상세 조회로 이동 시키기 위해 해당 Method 호출
-        this.goDetailView(response.data.inqurySn);
+        this.getDetailViewWithReply();
       }).catch(error => {
 
         console.log("답글 등록을 처리하는 중에 문제가 발생하여 catch문이 동작 하였습니다!");
@@ -331,7 +346,9 @@ export default {
         console.log("해당 하는 게시물의 답변이 삭제 됩니다! 해당 답변 정보를 출력 합니다! ", response.data);
 
         if (response.data.code === 200) {
-          this.goDetailView(response.data.inqrySn);
+
+          this.deleteReplyPopup = false;
+          this.getDetailViewWithReply();
         }
 
       }).catch(error => {
