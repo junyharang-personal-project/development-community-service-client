@@ -6,7 +6,7 @@
 
       <div class="topVisual">
         <p class="tit01">[JUNY COMPANY] 개발자 업무 협업 서비스 위한</p>
-        <p class="tit02">인공지능 클라우드 주니하랑 플랫폼 <span></span></p>
+        <p class="tit02">주니하랑 플랫폼 <span></span></p>
       </div> <!-- class="topVisual" 끝 -->
 
     </div> <!-- id="topVisualWrap" 끝 -->

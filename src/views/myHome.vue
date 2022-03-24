@@ -1,14 +1,17 @@
 <template>
   <!-- Contents 영역 -->
+  <!--  컨텐츠 영역 -->
   <div id="contentWrap">
 
     <div id="topVisualWrap">
 
-        <div id="topVisual">
-        <p class="tit01">대한민국 개발자 업무 협업 서비스 위한</p>
-        <p class="tit02">인공지능 클라우드 주니하랑 플랫폼 <span></span></p>
-        </div>
-      </div>
+      <div class="topVisual">
+        <p class="tit01">[JUNY COMPANY] 개발자 업무 협업 서비스 위한</p>
+
+        <p class="tit02">주니하랑 플랫폼 <span></span></p>
+      </div> <!-- div class="topVisual" 끝 -->
+
+    </div> <!-- div id="topVisualWrap" 끝 -->
 
       <!-- Contents 영역 -->
       <div id="Content">

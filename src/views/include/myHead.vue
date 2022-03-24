@@ -1,4 +1,3 @@
-/* eslint-disable */
 <template>
 
   <header>
@@ -20,16 +19,19 @@
 
           <div v-if="loginState === false">
 
-            <router-link to="/user/Login">
-              <span>Sign In</span>
+<!--            <router-link to="/user/Login">-->
+<!--              <span>Sign In</span>-->
+<!--            </router-link>-->
+
+            <router-link to="/user/signUp">
+              <span>Sign up</span>
             </router-link>
 
-          </div>
+          </div>  <!-- div v-if="loginState === false" 끝 -->
 
           <div v-else-if="loginState === true">
             <span @click="Logout">Logout</span>
-          </div>
-
+          </div>  <!-- div v-else-if="loginState === true" 끝 -->
         </a>
       </div>
 
@@ -194,15 +196,15 @@ export default {
   },
 
   mounted() {
-    if (VueCookieNext.getCookie('token') != undefined) {
-
-      this.loginState = true;
-
-    } else {
-
-      this.loginState = false;
-
-    }
+    // if (VueCookieNext.getCookie('token') !== undefined) {
+    //
+    //   this.loginState = true;
+    //
+    // } else {
+    //
+    //   this.loginState = false;
+    //
+    // }
   },
 
   methods : {
@@ -217,4 +219,3 @@ export default {
   }
 }
 </script>
-/* eslint-disable */

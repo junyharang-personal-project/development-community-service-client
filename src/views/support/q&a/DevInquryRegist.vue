@@ -7,7 +7,7 @@
             <div class="topVisual">
                 <p class="tit01">[JUNY COMPANY] 개발자 업무 협업 서비스 위한</p>
 
-                <p class="tit02">인공지능 클라우드 주니하랑 플랫폼 <span></span></p>
+                <p class="tit02">주니하랑 플랫폼 <span></span></p>
             </div>  <!-- div class="topVisual" 끝 -->
 
         </div>  <!-- div id="topVisualWrap" 끝 -->
@@ -46,6 +46,7 @@
                             </td>
 
                             <td class="PalignL">
+
                                 <input id="" type="text" class="w100p" placeholder="제목을 입력 해 주세요!" v-model="devInquryData.inqrySj" ref="inqrySj">
                             </td>
                         </tr>
@@ -137,7 +138,9 @@
 import { devInquryRegist, devInquryDetail } from "@/api/devInquryApi";
 
 export default {
-    data() {
+  components: {},
+
+  data() {
         return {
             finishPopupShow : false,
             validationPopupShow : false,
@@ -195,15 +198,15 @@ export default {
             // 필수 입력 항목 검사를 위한 Validation 분기절 (제목)
             if(this.devInquryData.inqrySj === undefined || this.devInquryData.inqrySj === '') {
                 this.validationPopupShow = true;
-                this.$ref.inqrySj.focus();
+                this.$refs.inqrySj.focus();
 
                 return false;
             }   // if(this.devInquryData.inqurySj == undefined || this.devInquryData.inqurySj == '') 끝
 
             // 필수 입력 항목 검사를 위한 Validation 분기절 (내용)
-            if(this.devInquryData.inqryCn == undefined || this.devInquryData.inqryCn == '') {
+            if(this.devInquryData.inqryCn === undefined || this.devInquryData.inqryCn === '') {
                 this.validationPopupShow = true;
-                this.$ref.inquryCn.focus();
+                this.$refs.inquryCn.focus();
 
                 return false;
             } // if(this.devInquryData.inqryCn == undefined || this.devInquryData.inqryCn == '' 끝

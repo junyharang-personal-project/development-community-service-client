@@ -6,10 +6,10 @@
 
       <div class="topVisual">
         <p class="tit01">[JUNY COMPANY] 개발자 업무 협업 서비스 위한</p>
-        <p class="tit02">인공지능 클라우드 주니하랑 플랫폼 <span></span></p>
+        <p class="tit02">주니하랑 플랫폼 <span></span></p>
       </div> <!-- div class="topVisual" 끝 -->
 
-    </div> <!-- div id="contentWrap" 끝 -->
+    </div> <!-- div id="topVisualWrap" 끝 -->
 
   <!-- 컨텐츠 영역 -->
     <div id="Content">
@@ -293,7 +293,7 @@ export default {
 
     doRegistReply() {
 
-      let pattern = /^\s+|\s+$/g;  // 공백(Space)에 해당하는 정규 표현식
+      const pattern = /^\s+|\s+$/g;  // 공백(Space)에 해당하는 정규 표현식
 
       console.log("답글 등록(doRegist\(\)) Method가 동작하였습니다! DevInquryDetailView.vue의 Member 변수 answerCn 값 : " + this.devInquryData.answerCn);
 
@@ -302,7 +302,7 @@ export default {
         console.log("답변을 등록하고자 하지만, 답변 내용이 작성되지 않았습니다!")
 
         this.validationPopupShow = true;
-        this.$ref.answerCn.focus();
+        this.$refs.answerCn.focus();
 
         return false;
       } // if (this.devInquryData.answerCn === undefined || this.devInquryData.answerCn === '')문 끝

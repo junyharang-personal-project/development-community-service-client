@@ -1,4 +1,3 @@
-/* eslint-disable */
 <template>
   <footer>
 
@@ -21,4 +20,3 @@
     </div>
   </footer>
 </template>
-/* eslint-disable */

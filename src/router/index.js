@@ -5,12 +5,19 @@ import Home from "../views/myHome.vue";
 import DevInquryRegist from "@/views/support/q&a/DevInquryRegist";
 import DevInquryList from "@/views/support/q&a/DevInquryList";
 import DevInquryDetailView from "@/views/support/q&a/DevInquryDetailView";
+import SignUp from "@/views/user/SignUp";
 
 const routes = [{
     /* 1. Main 화면 */
     path: '/',
     name: 'Home',
     component: Home,
+},
+{
+    // 회원 가입
+    path: '/user/signUp',
+    name: 'SignUp',
+    component: SignUp
 },
 {
     // Q&A 게시판 - 등록 / 수정
