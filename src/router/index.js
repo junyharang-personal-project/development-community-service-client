@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory} from "vue-router";
-import Home from "../views/myHome.vue";
+import Home from "../views/MyHome.vue";
 
 // Q&A 게시글
 import DevInquryRegist from "@/views/support/q&a/DevInquryRegist";

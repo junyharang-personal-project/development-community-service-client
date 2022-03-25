@@ -22,6 +22,28 @@ export function duplicateUserNickNameCheck(params) {
     });
 } // duplicateUserIdCheck(params) 끝
 
+export function duplicateUserEmailCheck(params) {
+    console.log("user.js의 회원가입 직전 이용자가 입력한 E-mail 중복 확인 Logic duplicateUserEmailCheck()가 동작하였습니다!")
+    console.log("Back End에 이용자가 입력한 정보를 전달하여 중복 확인을 실시 하겠습니다!")
+
+    return axios({
+        url: '/api/user//duplicate/email',
+        method : 'post',
+        data : params
+    });
+} // duplicateUserEmailCheck(params) 끝
+
+export function duplicatePhoneNumber(params) {
+    console.log("user.js의 회원가입 직전 이용자가 입력한 E-mail 중복 확인 Logic duplicateUserEmailCheck()가 동작하였습니다!")
+    console.log("Back End에 이용자가 입력한 정보를 전달하여 중복 확인을 실시 하겠습니다!")
+
+    return axios({
+        url: '/api/user/duplicate/phone-number',
+        method : 'post',
+        data : params
+    });
+} // duplicateUserEmailCheck(params) 끝
+
 export function apiSignup(params) {
     console.log("user.js의 회원가입 Logic apiSignup()이 동작하였습니다!")
     console.log("Back End에 이용자가 입력한 정보를 전달하여 회원 가입을 실시 하겠습니다!")
@@ -32,3 +54,4 @@ export function apiSignup(params) {
         data : params
     });
 } // apiSignup(params) 끝
+

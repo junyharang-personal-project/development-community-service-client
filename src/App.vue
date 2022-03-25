@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import TheHeaders from "@/views/include/myHead.vue";
-import TheFooters from "@/views/include/myFooter.vue";
+import TheHeaders from "@/views/include/MyHead.vue";
+import TheFooters from "@/views/include/MyFooter.vue";
 
 export default {
   components: {

@@ -101,7 +101,9 @@
               <ul class="deps1">
 
                 <li>
+                  <router-link to="/user/signUp">
                   회원 가입
+                  </router-link>
                   <!-- 회원 가입 -->
                 </li>
 
