@@ -59,11 +59,11 @@
             </td>
 
             <td class="PalignL">
-              <input type="password" id="inp_pwd" v-model="inputParam.password" class="pwd" ref="pwd">
+              <input type="password" id="inp_pwd" v-model="inputParam.password" class="pwd" ref="pwd" @blur="pwdCheck">
 
-              <p class="font_s t_red">[영문자(소, 대문자) + 숫자 + 특수문자]로 조합된 8글자 이상의 비밀번호를 입력 해 주세요! 연속된 문자는 사용할 수 없습니다!</p>
+              <p class="font_s t_red">[영문자(소, 대문자) + 숫자 + 특수문자]로 조합된 8글자 이상 15자리 이하의 비밀번호를 입력 해 주세요!</p>
 
-              <span class="font_s t_red" v-show="pwdLengthShow">비밀번호는 8자리 이상 입력해 주세요!</span>
+              <span class="font_s t_red" v-show="pwdLengthShow">비밀번호는 8자리 이상 15자리 이하로 입력해야 하며, 영(소, 대)문자, 숫자, 특수문자($@$!%*?&)만 입력 가능 합니다!</span>
             </td>
           </tr>
 
@@ -75,11 +75,11 @@
             <td class="PalignL">
               <input type="password" id="inp_pwd_check" v-model="userPasswordCheck" ref="checkPwd" @blur="pwdCheck">
 
-              <span class="font_s t_blue" v-show="equalShow">정상 입니다!</span>
+              <span class="font_s t_blue" v-show="isPWDEqualShow">정상 입니다!</span>
 
               <span class="font_s t_red" v-show="notEqualShow">비밀번호가 일치하지 않습니다!</span>
 
-              <span class="font_s t_red" v-show="pwdLengthShow">비밀번호는 8자리 이상 입력해 주세요!</span>
+              <span class="font_s t_red" v-show="pwdLengthShow">비밀번호는 8자리 이상 15자리 이하로 입력해야 하며, 영(소, 대)문자, 숫자, 특수문자($@$!%*?&)만 입력 가능 합니다!</span>
 
             </td>
           </tr>
@@ -410,7 +410,7 @@ export default {
       emailForm : false,
 
       // 중복 관련
-      isEqualShow : false,
+      isPWDEqualShow : false,
       notEqualShow : false,
 
       // 매개변수(Parameter)
@@ -420,7 +420,6 @@ export default {
       mobile3 : "",
 
       inputParam : {
-        userId : "",
         password : "",
         username : "",
         nickname : "",
@@ -430,6 +429,8 @@ export default {
       specialCharacters : /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi,      // 특수문자에 해당하는 정규 표현식
       spaceCharacters : /^\s+|\s+$/g,                                                 // 공백(Space)에 해당하는 정규 표현식
       charKOREAN : /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/,                                                // 한글 정규 표현식
+      passwordCharacters : /^[A-Za-z\d$@$!%*?&]{8,15}$/,
+      emailCharacters : /^[0-9a-zA-Z]+@[0-9a-zA-Z]+\.([a-z]+)*$/,
 
     }
   }, // data() 끝
@@ -574,8 +575,8 @@ export default {
     // 비밀번호 확인
     pwdCheck() {
 
-      if (this.inputParam.password.length <= 8) {
-        console.log("비밀번호는 8자리 이상 입력해야 합니다!")
+      if (this.passwordCharacters.test(this.inputParam.password) === false) {
+        console.log("비밀번호는 8자리 이상 15자리 이하로 입력해야 하며, 영(소, 대)문자, 숫자, 특수문자($@$!%*?&)만 입력 가능 합니다!")
 
         this.pwdLengthShow = true;
         this.isPWDCheck = true;
@@ -599,7 +600,7 @@ export default {
       } else {
         console.log("비밀번호가 일치합니다!")
 
-        this.isEqualShow = true;
+        this.isPWDEqualShow = true;
         this.notEqualShow = false;
         this.pwdLengthShow = false;
 
@@ -679,25 +680,10 @@ export default {
 
     emailCheck() {
 
-      const specialCharacters = /[ \{\}\[\]\/?,;:|\)*~`!^\+┼<>\#$%&\'\"\\\(\=]/gi;      // 특수문자에 해당하는 정규 표현식(이메일은 '@과.'가 들어가야 되서 '@과.' 제외
-
-      const imsi = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
       if (this.inputParam.userEmail === undefined || this.inputParam.userEmail === '' || this.inputParam.userEmail === null)  {
         console.log("Email이 입력되지 않았습니다!")
 
         this.spaceShow = true;
-
-        this.isEmailDupplicateCheck = false;
-
-        this.$refs.userEmail.focus();
-
-        return false;
-
-      } else if (specialCharacters.exec(this.inputParam.userEmail) !== null) {
-        console.log("Email에 '@, .과 -, _'를 제외한 특수 문자가 있습니다!")
-
-        this.emailSpacialShow = true;
 
         this.isEmailDupplicateCheck = false;
 
@@ -716,7 +702,7 @@ export default {
 
         return false;
 
-      } else if (imsi.exec(this.inputParam.userEmail) == null) {
+      } else if (this.emailCharacters.exec(this.inputParam.userEmail) == null) {
         console.log("Email 형식이 아닙니다!")
 
         console.log("Email 값 : " + this.inputParam.userEmail)
@@ -824,6 +810,11 @@ export default {
 
         apiSignup(this.inputParam).then(response => {
           console.log("회원 가입 요청을 보낸 뒤 Back End에서 돌아온 응답을 확인 합니다! 응답 코드 : " + response.data.statusCode);
+          console.log("HTTP STATUS CODE 값 : " + response.data.statusCode);
+          console.log("DATA 값 : " + response.data.data);
+          console.log("한글 응답 값 : " + response.data.messageKo);
+          console.log("영어 응답 값 : " + response.data.messageEn);
+
 
           if (response.data.statusCode === 200) {
             this.$router.push({
@@ -854,10 +845,8 @@ export default {
 
         return false;
 
-      } // this.isIDDupplicateCheck && this.isNickNameDupplicateCheck && this.isEmailDupplicateCheck && this.isPasswordDupplicateCheck && this.isPhoneNumberDupplicateCheck 끝
-
-
-    } // getInsert() 끝
+      } // if (this.isIDDupplicateCheck && this.isNickNameDupplicateCheck && this.isEmailDupplicateCheck && this.isPasswordDupplicateCheck && this.isPhoneNumberDupplicateCheck) 끝
+    } // goSignup() 끝
   } // methods 끝
 } // export default 끝
 </script>
