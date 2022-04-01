@@ -612,7 +612,7 @@ h1.logo a span	{
 .subNavi.sub04	{left:-80px;}
 .subNavi.sub05	{left:-150px;}
 /* ===== 로그인 ===== */
-.login_box{width: 100%; margin-bottom: 140px; border-top: 2px solid #000; background:url(../images/logo.gif) no-repeat 28% 30px; padding-top:60px;}
+.login_box{width: 100%; margin-bottom: 140px; border-top: 2px solid #000; background:url(../images/juny_company.png) no-repeat 27% 25px; padding-top:60px;}
 .login_box .titarea .login_r{float: right; font-size: 22px; font-weight: 600; color: #a3a3a3; margin-top: -25px;}
 .login_area_wrap	{overflow:hidden;}
 .login_area_wrap:after	{content:''; clear:both; display:block;}

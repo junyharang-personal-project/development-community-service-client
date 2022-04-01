@@ -19,21 +19,20 @@
 
           <div v-if="loginState === false">
 
-<!--            <router-link to="/user/Login">-->
-<!--              <span>Sign In</span>-->
-<!--            </router-link>-->
-
-            <router-link to="/user/signUp">
-              <span>Sign up</span>
+            <router-link to="/user/signIn">
+              <span>Sign In</span>
             </router-link>
 
+<!--            <router-link to="/user/signUp">-->
+<!--              <span>Sign up</span>-->
+<!--            </router-link>-->
           </div>  <!-- div v-if="loginState === false" 끝 -->
 
           <div v-else-if="loginState === true">
-            <span @click="Logout">Logout</span>
+            <span @click="Logout">Sign Out</span>
           </div>  <!-- div v-else-if="loginState === true" 끝 -->
         </a>
-      </div>
+      </div>  <!-- div class="topLink" 끝 -->
 
       <div class="topNav">
 
@@ -198,16 +197,16 @@ export default {
   },
 
   mounted() {
-    // if (VueCookieNext.getCookie('token') !== undefined) {
-    //
-    //   this.loginState = true;
-    //
-    // } else {
-    //
-    //   this.loginState = false;
-    //
-    // }
-  },
+    if (VueCookieNext.getCookie('token') !== undefined) {
+
+      this.loginState = true;
+
+    } else {
+
+      this.loginState = false;
+
+    } // if (VueCookieNext.getCookie('token') !== undefined) - else 끝
+  },  // mounted() 끝
 
   methods : {
 

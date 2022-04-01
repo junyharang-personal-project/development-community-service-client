@@ -27,7 +27,7 @@ export function duplicateUserEmailCheck(params) {
     console.log("Back End에 이용자가 입력한 정보를 전달하여 중복 확인을 실시 하겠습니다!")
 
     return axios({
-        url: '/api/user//duplicate/email',
+        url: '/api/user/duplicate/email',
         method : 'post',
         data : params
     });
@@ -54,4 +54,21 @@ export function apiSignup(params) {
         data : params
     });
 } // apiSignup(params) 끝
+
+// Object 형태로 Data 응답
+export function signIn(params) {
+    return axios({
+        url: '/api/user/signin',
+        method : 'post',
+        data : params
+    });
+}   // signIn(params) 끝
+
+export function logout(token) {
+    return axios({
+        url : 'api/user/logout',
+        method : 'delete',
+        data : token
+    });
+}   // logout(token) 끝
 

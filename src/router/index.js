@@ -6,6 +6,7 @@ import DevInquryRegist from "@/views/support/q&a/DevInquryRegist";
 import DevInquryList from "@/views/support/q&a/DevInquryList";
 import DevInquryDetailView from "@/views/support/q&a/DevInquryDetailView";
 import SignUp from "@/views/user/SignUp";
+import SignIn from "@/views/user/SignIn";
 
 const routes = [{
     /* 1. Main 화면 */
@@ -18,6 +19,12 @@ const routes = [{
     path: '/user/signUp',
     name: 'SignUp',
     component: SignUp
+},
+{
+    // 로그인
+    path: '/user/signIn',
+    name: 'SignIn',
+    component: SignIn
 },
 {
     // Q&A 게시판 - 등록 / 수정
